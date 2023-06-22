@@ -7,7 +7,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/config";
 import { toast } from "react-toastify";
-import { createAdminUser, createNewAdminAuth } from "./userAction";
+import { createNewAdminAuth } from "./userAction";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -72,7 +72,7 @@ const Login = () => {
             </Button>
           </div>
           <p className="text-end mt-3">
-            Forget Password?
+            Forget Password? <br />
             <Link to="/password-reset-request">Reset Now!</Link>
           </p>
         </Form>
