@@ -3,17 +3,27 @@ import Form from "react-bootstrap/Form";
 import Header from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { CustomInput } from "../../components/custom-input/CustomInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/config";
 import { toast } from "react-toastify";
-import { createNewAdminAuth } from "./userAction";
-import { Link } from "react-router-dom";
+import { createNewAdminAuth, signInUserAction } from "./userAction";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
-    role: "admin",
+    // role: "admin",
   });
+
+  const { uid } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    uid && navigate("/dashboard");
+  }, [uid, navigate]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -27,12 +37,9 @@ const Login = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
-    const { confirmPassword, ...rest } = form;
+    const { password, email } = form;
 
-    if (form.password !== confirmPassword) {
-      return toast.error("Password should match!");
-    }
-    createNewAdminAuth(rest);
+    dispatch(signInUserAction({ password, email }));
   };
 
   const inputFields = [

@@ -5,8 +5,19 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/config";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../pages/registration-login/userSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const handleOnLogout = () => {
+    signOut(auth).then(() => {
+      //reset user state
+      dispatch(setUser({}));
+    });
+  };
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
@@ -30,7 +41,7 @@ const Header = () => {
               Login
             </Link>
 
-            <Link to="/logout" className="nav-link">
+            <Link to="/logout" className="nav-link" onClick={handleOnLogout}>
               Logout
             </Link>
           </Nav>
