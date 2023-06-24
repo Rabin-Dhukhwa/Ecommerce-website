@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/config";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../pages/registration-login/userSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.adminInfo);
+
   const handleOnLogout = () => {
     signOut(auth).then(() => {
       //reset user state
@@ -31,19 +33,25 @@ const Header = () => {
             <Link to="/" className="nav-link" title="Home">
               <AiFillHome />
             </Link>
-            <Link to="/dashboard" className="nav-link">
-              Dashboard
-            </Link>
-            <Link to="/registration" className="nav-link">
-              Signup
-            </Link>
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
-
-            <Link to="/logout" className="nav-link" onClick={handleOnLogout}>
-              Logout
-            </Link>
+            {user?.uid ? (
+              <>
+                <Link to="/dashboard" className="nav-link">
+                  Dashboard
+                </Link>
+                <Link to="/" className="nav-link" onClick={handleOnLogout}>
+                  Logout
+                </Link>
+                <Link to="/registration" className="nav-link">
+                  Signup
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/" className="nav-link">
+                  Login
+                </Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

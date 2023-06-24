@@ -20,7 +20,7 @@ export const SideMenu = () => {
       path: "/payment-options",
     },
     {
-      label: "orders",
+      label: "Orders",
       path: "/orders",
     },
     {

@@ -1,8 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
-export const PrivateRouter = ({ children }) => {
-  const { user } = useSelector((state) => state.user);
-  return user?.uid ? children : <Navigate to="/login" />;
+export const PrivateRoute = ({ children }) => {
+  const location = useLocation();
+  // console.log(location);
+
+  const { user } = useSelector((state) => state.adminInfo);
+
+  return user?.uid ? children : <Navigate to="/" state={{ from: location }} />;
 };

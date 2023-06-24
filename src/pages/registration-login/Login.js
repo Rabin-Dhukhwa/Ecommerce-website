@@ -4,26 +4,22 @@ import Header from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { CustomInput } from "../../components/custom-input/CustomInput";
 import { useEffect, useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/config";
-import { toast } from "react-toastify";
-import { createNewAdminAuth, signInUserAction } from "./userAction";
-import { Link, useNavigate } from "react-router-dom";
+import { loginAdminUser } from "./userAction";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [form, setForm] = useState({
-    // role: "admin",
-  });
-
-  const { uid } = useSelector((state) => state.user);
+  const [form, setForm] = useState({});
+  const { user } = useSelector((state) => state.adminInfo);
+  // console.log(location);
+  const pathname = location.state?.from?.pathname || "/dashboard";
 
   useEffect(() => {
-    uid && navigate("/dashboard");
-  }, [uid, navigate]);
+    user?.uid && navigate(pathname);
+  }, [user?.uid, navigate, pathname]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +35,7 @@ const Login = () => {
     console.log(form);
     const { password, email } = form;
 
-    dispatch(signInUserAction({ password, email }));
+    dispatch(loginAdminUser({ password, email }));
   };
 
   const inputFields = [
