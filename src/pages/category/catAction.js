@@ -33,7 +33,7 @@ export const fetchAllCategoryAction = () => async (dispatch) => {
     //read all data from the TB_CATEGORY
     const q = query(collection(db, TB_CATEGORY));
     const catSnap = await getDocs(q);
-    console.log(catSnap);
+    // console.log(catSnap);
 
     const catList = [];
     catSnap.forEach((doc) => {

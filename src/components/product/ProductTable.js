@@ -1,0 +1,50 @@
+import React, { useEffect } from "react";
+import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fethProductsAction } from "../../pages/products/productAction";
+
+export const ProductTable = () => {
+  const dispatch = useDispatch();
+
+  const { products } = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(fethProductsAction());
+  }, [dispatch]);
+  return (
+    <div>
+      <Table striped hover bordered>
+        <thead>
+          <th>Thumbnail</th>
+          <th>Name</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Sales Price</th>
+          <th>Sales ends</th>
+          <th>Edit</th>
+        </thead>
+        <tbody>
+          {products.map((prod) => (
+            <tr>
+              <td>
+                <img src={prod.thumbnail} alt={prod.name} width="150px" />
+              </td>
+              <td>{prod.name}</td>
+              <td>{prod.qty}</td>
+              <td>${prod.price}</td>
+              <td>${prod.salesPrice}</td>
+              <td>
+                {prod.salesEnds &&
+                  new Date(prod.salesEnds).toLocaleDateString()}
+              </td>
+              <td>
+                <Link to="/product/id">Edit</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </div>
+  );
+};
