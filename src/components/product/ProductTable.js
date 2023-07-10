@@ -1,45 +1,63 @@
-import React, { useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fethProductsAction } from "../../pages/products/productAction";
+import { setSelectedCat } from "../../pages/category/catSlice";
+import { setModalShow } from "../../system-state/systemSlice";
 
 export const ProductTable = () => {
   const dispatch = useDispatch();
-
-  const { products } = useSelector((state) => state.product);
-
+  const { productList } = useSelector((state) => state.products);
+  const [display, setDisplay] = useState([]);
   useEffect(() => {
-    dispatch(fethProductsAction());
-  }, [dispatch]);
+    setDisplay(productList);
+  }, [productList]);
+
+  const handleOnEdit = (item) => {
+    dispatch(setSelectedCat(item));
+    dispatch(setModalShow(true));
+  };
+
+  const handleOnSearch = (e) => {
+    const { value } = e.target;
+
+    setDisplay(
+      productList.filter(({ name }) =>
+        name.toLowerCase().includes(value.toLowerCase())
+      )
+    );
+  };
   return (
-    <div>
-      <Table striped hover bordered>
+    <div className="mt-5">
+      <div className="w-25 mb-3">
+        <Form.Control onChange={handleOnSearch} placeholder="Search by name" />
+      </div>
+      <Table striped bordered hover>
         <thead>
-          <th>Thumbnail</th>
-          <th>Name</th>
-          <th>Qty</th>
-          <th>Price</th>
-          <th>Sales Price</th>
-          <th>Sales ends</th>
-          <th>Edit</th>
+          <tr>
+            <th>#</th>
+            <th>Thumbnail</th>
+            <th> Status</th>
+            <th> Name</th>
+            <th>Slug </th>
+            <th>Action</th>
+          </tr>
         </thead>
         <tbody>
-          {products.map((prod) => (
-            <tr>
+          {display.map((item, i) => (
+            <tr key={item.slug}>
+              <td>{i + 1}</td>
               <td>
-                <img src={prod.thumbnail} alt={prod.name} width="150px" />
-              </td>
-              <td>{prod.name}</td>
-              <td>{prod.qty}</td>
-              <td>${prod.price}</td>
-              <td>${prod.salesPrice}</td>
-              <td>
-                {prod.salesEnds &&
-                  new Date(prod.salesEnds).toLocaleDateString()}
+                <img src={item.thumbnail} width="150px" alt="" />
               </td>
               <td>
-                <Link to="/product/id">Edit</Link>
+                <span className={item.status}>{item.status}</span>
+              </td>
+              <td>{item.title}</td>
+              <td>{item.slug}</td>
+              <td>
+                <Button variant="warning" onClick={() => handleOnEdit(item)}>
+                  Edit
+                </Button>
               </td>
             </tr>
           ))}

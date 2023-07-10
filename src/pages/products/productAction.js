@@ -1,37 +1,67 @@
-import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
-import { db } from "../../config/config";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+} from "firebase/firestore";
 import { toast } from "react-toastify";
-import { setProduct } from "./productSlic";
+import { TB_PRODUCT } from "../../utils/constant";
+import { setProductList } from "./productSlice";
+import { setModalShow } from "../../system-state/systemSlice";
+import { db } from "../../config/config";
 
-export const fethProductsAction = () => async (dispatch) => {
-  try {
-    //get all categories from firstore and mount in the redux
-    const q = query(collection(db, "products"));
-    const prodSnapshot = await getDocs(q);
-
-    console.log(prodSnapshot);
-
-    let prods = [];
-
-    prodSnapshot.forEach((doc) => {
-      const prod = { ...doc.data() };
-      prods.push(prod);
-    });
-
-    dispatch(setProduct(prods));
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const addNewProductAction =
+export const addProductAction =
   ({ slug, ...rest }) =>
   async (dispatch) => {
     try {
-      await setDoc(doc(db, "products", slug), rest);
-
-      toast.success("New product has been added");
+      const pending = setDoc(doc(db, TB_PRODUCT, slug), rest, { merge: true });
+      toast.promise(pending, {
+        pending: "please wait",
+        success: "Product database has been upadated",
+        error: "Unable to process your request, Pelase try again later",
+      });
+      dispatch(fetchAllProductAction());
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
+
+export const fetchAllProductAction = () => async (dispatch) => {
+  try {
+    //read all data from the TBL_PRODUCT
+    const q = query(collection(db, TB_PRODUCT));
+    const productSanp = await getDocs(q);
+
+    const productList = [];
+
+    productSanp.forEach((doc) => {
+      const slug = doc.id;
+      const data = doc.data();
+
+      productList.push({ ...data, slug });
+    });
+    dispatch(setProductList(productList));
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const deleteCat = (slug) => (dispatch) => {
+  try {
+    const pending = deleteDoc(doc(db, TB_PRODUCT, slug));
+
+    toast.promise(pending, {
+      pending: "Please wait while deleting..",
+      success: "Product has been deleted",
+      error:
+        "Unable to delete the product, please try again later or contact admin",
+    });
+
+    dispatch(setModalShow(false));
+    dispatch(fetchAllProductAction());
+  } catch (error) {
+    toast.error(error.message);
+  }
+};

@@ -10,7 +10,7 @@ export const CategoryTable = () => {
   const dispatch = useDispatch();
 
   const [display, setDisplay] = useState([]);
-  const { catList } = useSelector((state) => state.category);
+  const { catList } = useSelector((state) => state.categories);
 
   useEffect(() => {
     setDisplay(catList);
@@ -31,40 +31,6 @@ export const CategoryTable = () => {
   };
 
   return (
-    // <div>
-    //   <CustomModal title="Update Category">
-    //     <EditCatForm />
-    //   </CustomModal>
-    //   <Table striped bordered hover>
-    //     <thead>
-    //       <tr>
-    //         <th>#</th>
-    //         <th>Status</th>
-    //         <th>Name</th>
-    //         <th>Slug</th>
-    //         <th>Action</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {display.map((item, i) => (
-    //         <tr key={item.slug}>
-    //           <td>{i + 1}</td>
-    //           <td>
-    //             <span className={item.status}>{item.status}</span>
-    //           </td>
-    //           <td>{item.name}</td>
-    //           <td>{item.slug}</td>
-    //           <td>
-    //             <Button variant="warning" onClick={() => handleOnEdit(item)}>
-    //               Edit
-    //             </Button>
-    //           </td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </Table>
-    // </div>
-
     // -------------
     <div className="mt-5">
       <CustomModal title="Update Category">

@@ -9,7 +9,7 @@ export const EditCatForm = () => {
   const [form, setForm] = useState({
     status: "inactive",
   });
-  const { selectedCat } = useSelector((state) => state.category);
+  const { selectedCat } = useSelector((state) => state.categories);
   useEffect(() => {
     setForm(selectedCat);
   }, [selectedCat]);
@@ -17,7 +17,8 @@ export const EditCatForm = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addCategoryAction(form));
+    dispatch(addCategoryAction(form)); // form already contain slug here
+    // dispatch(addCategoryAction({ ...form, update: true }));//trying
   };
 
   const handleOnChange = (e) => {

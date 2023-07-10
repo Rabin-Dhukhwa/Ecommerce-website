@@ -6,11 +6,11 @@ import Login from "./pages/registration-login/Login";
 import Register from "./pages/registration-login/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Category from "./pages/category/Category";
-import Products from "./pages/products/Products";
+// import Products from "./pages/products/Products";
 import PaymentOptions from "./pages/payment-option/PaymentOptions";
 import Orders from "./pages/order/Orders";
 import Buyers from "./pages/buyer/Buyers";
-import Reviews from "./pages/review/Reviews";
+// import Reviews from "./pages/review/Reviews";
 import Admin from "./pages/admin/Admin";
 import Profile from "./pages/profile/Profile";
 import { useDispatch } from "react-redux";
@@ -18,6 +18,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./config/config";
 import { getUserProfile } from "./pages/registration-login/userAction";
 import { PrivateRoute } from "./components/private-route/PrivateRoute";
+import Products from "./pages/products/Products";
+import Reviews from "./pages/review/Reviews";
+import { useEffect } from "react";
+import { fetchAllCategoryAction } from "./pages/category/catAction";
+import { fetchAllProductAction } from "./pages/products/productAction";
+import AddProduct from "./pages/products/AddProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +31,11 @@ function App() {
     if (user?.uid) {
       dispatch(getUserProfile(user?.uid));
     }
+  });
+  //fetch anything you need in the multipl places of the app
+  useEffect(() => {
+    dispatch(fetchAllCategoryAction());
+    dispatch(fetchAllProductAction());
   });
   return (
     <div className="">
@@ -61,6 +72,14 @@ function App() {
           element={
             <PrivateRoute>
               <Products />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/product/new"
+          element={
+            <PrivateRoute>
+              <AddProduct />
             </PrivateRoute>
           }
         />

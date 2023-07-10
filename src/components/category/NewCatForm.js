@@ -12,7 +12,7 @@ export const NewCatForm = () => {
   });
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // console.log(form);
+    console.log(form);
     const slug = slugify(form.name, { lower: true, trim: true });
     dispatch(addCategoryAction({ ...form, slug }));
   };
@@ -42,7 +42,7 @@ export const NewCatForm = () => {
             <Form.Group className="mb-3">
               <Form.Check
                 name="status"
-                type="switch"
+                type="switch" // this give the checked attribute
                 label="Status"
                 onChange={handleOnChange}
               />
@@ -54,6 +54,7 @@ export const NewCatForm = () => {
                 name="name"
                 type="text"
                 label=""
+                required
                 onChange={handleOnChange}
               />
             </Form.Group>
