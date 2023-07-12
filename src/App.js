@@ -24,6 +24,7 @@ import { useEffect } from "react";
 import { fetchAllCategoryAction } from "./pages/category/catAction";
 import { fetchAllProductAction } from "./pages/products/productAction";
 import AddProduct from "./pages/products/AddProduct";
+import EditProduct from "./pages/products/EditProduct";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,7 @@ function App() {
       dispatch(getUserProfile(user?.uid));
     }
   });
-  //fetch anything you need in the multipl places of the app
+  // fetch anything you need in the multipl places of the app
   useEffect(() => {
     dispatch(fetchAllCategoryAction());
     dispatch(fetchAllProductAction());
@@ -80,6 +81,14 @@ function App() {
           element={
             <PrivateRoute>
               <AddProduct />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/product/edit/:id"
+          element={
+            <PrivateRoute>
+              <EditProduct />
             </PrivateRoute>
           }
         />

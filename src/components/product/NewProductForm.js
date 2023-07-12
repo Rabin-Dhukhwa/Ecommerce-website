@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, ProgressBar, Row } from "react-bootstrap";
 import { CustomInput } from "../custom-input/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +8,17 @@ import { toast } from "react-toastify";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import store from "../../store";
 import { storage } from "../../config/config";
+import { fetchAllCategoryAction } from "../../pages/category/catAction";
 
 export const NewProductForm = () => {
   const dispatch = useDispatch();
+  const { catList } = useSelector((state) => state.categories);
 
-  const { catList } = useSelector((state) => state.category);
+  // when you need to fetch all category and if you just need in this page and don't want to rerender automatically
+  // useEffect(() => {
+  //   !catList.length > 0 && dispatch(fetchAllCategoryAction());
+  //   // dispatch(fetchAllProductAction());
+  // });
 
   const [form, setForm] = useState({
     status: "inactive",
@@ -25,52 +31,45 @@ export const NewProductForm = () => {
 
     try {
       const slug = slugify(form.title, { lower: true, trim: true });
-
-      // uploda the images receive the url
-      let images = [];
+      //upload the images and receive the url
       if (img.length) {
         //loop through images
         const imagesPending = img.map((img) => {
           return new Promise((resolve, reject) => {
-            const storeRef = ref(
+            const storageRef = ref(
               storage,
               `/products/img/${Date.now()}-${img.name}`
             );
-
-            const uploadImg = uploadBytesResumable(storeRef, img);
+            const uploadImg = uploadBytesResumable(storageRef, img);
 
             uploadImg.on(
-              //state change
               "state_changed",
-
-              // progress while uploading
-              (snapshot) => {
-                console.log(snapshot);
+              (snapShot) => {
+                console.log(snapShot);
                 const per = Math.round(
-                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                  (snapShot.bytesTransferred / snapShot.totalBytes) * 100
                 );
-
                 setProgress(per);
               },
-
-              // catch erro if any thrown
               (error) => {
                 console.log(error);
                 toast.error(error.message);
               },
-
-              // once uploading process is completed, get the url of the upload image
               async () => {
                 await getDownloadURL(uploadImg.snapshot.ref).then((url) => {
                   resolve(url);
+
+                  // console.log(url);
+                  //if you just want to upload single image at a time.
+                  // dispatch(addProductAction({ ...form, slug, thumbnail: url }));
                 });
               }
             );
           });
         });
-
         const imageUrls = await Promise.all(imagesPending);
-        // add the url with from
+        console.log(imageUrls, imagesPending);
+        //add the url with form data
         dispatch(
           addProductAction({
             ...form,
@@ -106,7 +105,7 @@ export const NewProductForm = () => {
       required: true,
     },
     {
-      label: "SKU",
+      label: "SKU", // stock keeping unit is a unique identifier assigned to each distinct product or item.
       name: "sku",
       type: "text",
       placeholder: "MB_KD8",
@@ -155,10 +154,12 @@ export const NewProductForm = () => {
   ];
 
   const handleOnImageAttached = (e) => {
-    const { files } = e.target;
+    const { files } = e.target; // files is an array like object
+    console.log(files);
 
     setImg([...files]);
   };
+  // console.log(img);
 
   return (
     <div>
