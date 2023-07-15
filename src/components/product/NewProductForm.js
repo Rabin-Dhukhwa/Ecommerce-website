@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Form, ProgressBar, Row } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Form, ProgressBar } from "react-bootstrap";
 import { CustomInput } from "../custom-input/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductAction } from "../../pages/products/productAction";
 import slugify from "slugify";
 import { toast } from "react-toastify";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import store from "../../store";
 import { storage } from "../../config/config";
-import { fetchAllCategoryAction } from "../../pages/category/catAction";
+// import { fetchAllCategoryAction } from "../../pages/category/catAction";
 
 export const NewProductForm = () => {
   const dispatch = useDispatch();
@@ -101,14 +100,14 @@ export const NewProductForm = () => {
       label: "Product Name",
       name: "title",
       type: "text",
-      placeholder: "mobile phone",
+      placeholder: "",
       required: true,
     },
     {
       label: "SKU", // stock keeping unit is a unique identifier assigned to each distinct product or item.
       name: "sku",
       type: "text",
-      placeholder: "MB_KD8",
+      placeholder: "**_***",
       required: true,
     },
 
@@ -116,21 +115,21 @@ export const NewProductForm = () => {
       label: "Price",
       name: "price",
       type: "number",
-      placeholder: "34",
+      placeholder: "",
       required: true,
     },
     {
       label: "Qty",
       name: "qty",
       type: "number",
-      placeholder: "33",
+      placeholder: "",
       required: true,
     },
     {
       label: "Sales Price",
       name: "salesPrice",
       type: "number",
-      placeholder: "22",
+      placeholder: "",
     },
     {
       label: "Sales Start From",

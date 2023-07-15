@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, ProgressBar, Row } from "react-bootstrap";
+import { Button, Form, ProgressBar } from "react-bootstrap";
 import { CustomInput } from "../custom-input/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   addProductAction,
   deleteProduct,
@@ -17,6 +18,7 @@ export const EditProductForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
+  // console.log(id);
 
   const [form, setForm] = useState({});
   const [progress, setProgress] = useState(0);
@@ -102,7 +104,7 @@ export const EditProductForm = () => {
   const handleOnChange = (e) => {
     let { checked, name, value } = e.target;
     if (name === "thumbnail" && imgToRemove.includes(value)) {
-      return alert("Thubnail can't be deleted, change the thumbnail first");
+      return alert("Thumbnail can't be deleted, change the thumbnail first");
     }
 
     if (name === "status") {
@@ -203,7 +205,7 @@ export const EditProductForm = () => {
       if (form.thumbnail === value) {
         return alert("Thumbnail can't be deleted, change the thumbnail first");
       }
-      // insert img inthe array
+      // insert img in the array
       setImgToRemove([...imgToRemove, value]);
     } else {
       const filteredImg = imgToRemove.filter((img) => img !== value);

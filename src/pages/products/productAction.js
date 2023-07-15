@@ -10,7 +10,6 @@ import {
 import { toast } from "react-toastify";
 import { TB_PRODUCT } from "../../utils/constant";
 import { setProductList, setSelectedProduct } from "./productSlice";
-import { setModalShow } from "../../system-state/systemSlice";
 import { db } from "../../config/config";
 
 export const addProductAction =
@@ -75,7 +74,7 @@ export const deleteProduct = (slug) => async (dispatch) => {
         "Unable to delete the product, please try again later or contact admin",
     });
 
-    const success = await pending;
+    await pending;
 
     dispatch(fetchAllProductAction());
 
