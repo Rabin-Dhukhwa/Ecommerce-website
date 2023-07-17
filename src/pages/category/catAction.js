@@ -18,6 +18,7 @@ export const addCategoryAction =
   (dispatch) => {
     try {
       //merge true will merge the updated data instead of replacing  new data only
+      console.log(rest);
       const pending = setDoc(doc(db, TB_CATEGORY, slug), rest, { merge: true });
       // if (rest.update) {
       //   slug = rest.name;
@@ -43,7 +44,7 @@ export const fetchAllCategoryAction = () => async (dispatch) => {
     //read all data from the TB_CATEGORY
     const q = query(collection(db, TB_CATEGORY));
     const catSnap = await getDocs(q);
-    console.log(catSnap);
+    // console.log(catSnap);
 
     const catList = [];
     //can use forEach() in catSnap, predefined in catSnap object return by firebase
@@ -51,7 +52,7 @@ export const fetchAllCategoryAction = () => async (dispatch) => {
       // console.log(doc);
       const slug = doc.id;
       const data = doc.data();
-      console.log(data.name);
+      // console.log(data);
       catList.push({ ...data, slug });
       // console.log(catList);
     });

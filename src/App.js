@@ -25,6 +25,7 @@ import { fetchAllCategoryAction } from "./pages/category/catAction";
 import { fetchAllProductAction } from "./pages/products/productAction";
 import AddProduct from "./pages/products/AddProduct";
 import EditProduct from "./pages/products/EditProduct";
+import { fetchPaymentAction } from "./pages/payment-option/PaymentAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllCategoryAction());
     dispatch(fetchAllProductAction());
+    dispatch(fetchPaymentAction());
   });
   return (
     <div className="">

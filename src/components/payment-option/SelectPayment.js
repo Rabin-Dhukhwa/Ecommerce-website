@@ -26,13 +26,13 @@ export const SelectPayment = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(selectedPayments);
-    // dispatch(addPaymentAction(selectedPayments));
+    dispatch(addPaymentAction(selectedPayments));
   };
 
   //   console.log(selectedPayments);
   return (
     <Form
-      className="border p-5 shadow-lg rounded mt-3"
+      className="border p-3 shadow-lg rounded mt-3 "
       onSubmit={handleOnSubmit}
     >
       <Form.Group className="mb-2">
@@ -40,56 +40,56 @@ export const SelectPayment = () => {
           type="checkbox"
           id="radioSelect1"
           label="Visa/Mastercard"
-          value="visa/mastercard"
+          value="Visa/Mastercard"
           // checked={selectedPayments.includes("visa/mastercard")}
           onChange={handlePaymentChange}
         />
       </Form.Group>
       <div className="mb-5">
-        <i class="fa-brands fa-cc-visa fa-2xl"></i>
-        <i class="fa-brands fa-cc-mastercard fa-2xl"></i>
+        <i className="fa-brands fa-cc-visa fa-2xl"></i>
+        <i className="fa-brands fa-cc-mastercard fa-2xl"></i>
       </div>
       <Form.Group className="mb-2">
         <Form.Check
           type="checkbox"
           id="radioSelect2"
           label="Paypal"
-          value="paypal"
+          value="Paypal"
           // checked={selectedPayments.includes("paypal")}
           onChange={handlePaymentChange}
         />
       </Form.Group>
       <div className="mb-5">
-        <i class="fa-brands fa-cc-paypal fa-2xl"></i>
+        <i className="fa-brands fa-cc-paypal fa-2xl"></i>
       </div>
       <Form.Group className="mb-2">
         <Form.Check
           type="checkbox"
           id="radioSelect3"
           label="Google Pay"
-          value="googlepay"
+          value="Google-Pay"
           // checked={selectedPayments.includes("googlepay")}
           onChange={handlePaymentChange}
         />
       </Form.Group>
       <div className="mb-5">
-        <i class="fa-brands fa-google-pay fa-2xl"></i>
+        <i className="fa-brands fa-google-pay fa-2xl"></i>
       </div>
       <Form.Group className="mb-2">
         <Form.Check
           type="checkbox"
           id="radioSelect4"
           label="Apple Pay"
-          value="applepay"
+          value="Apple-Pay"
           onChange={handlePaymentChange}
         />
       </Form.Group>
       <div className="mb-5">
-        <i class="fa-brands fa-cc-apple-pay fa-2xl"></i>
+        <i className="fa-brands fa-cc-apple-pay fa-2xl"></i>
       </div>
       <div className="d-grid">
         <Button variant="outline-dark" type="submit">
-          Select payment method
+          Update payment Methods
         </Button>
       </div>
     </Form>

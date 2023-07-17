@@ -54,6 +54,7 @@ export const fetchSingleProductAction = (id) => async (dispatch) => {
     //     //read single data from the TB_PRODUCT
 
     const productSanp = await getDoc(doc(db, TB_PRODUCT, id));
+    // console.log(productSanp);
 
     const data = productSanp.data();
     console.log(data);
