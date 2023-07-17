@@ -35,6 +35,9 @@ export const SelectPayment = () => {
       className="border p-3 shadow-lg rounded mt-3 "
       onSubmit={handleOnSubmit}
     >
+      <h5>Update Payment Methods</h5>
+      <hr />
+
       <Form.Group className="mb-2">
         <Form.Check
           type="checkbox"
@@ -89,7 +92,7 @@ export const SelectPayment = () => {
       </div>
       <div className="d-grid">
         <Button variant="outline-dark" type="submit">
-          Update payment Methods
+          Submit
         </Button>
       </div>
     </Form>
