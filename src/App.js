@@ -27,6 +27,7 @@ import AddProduct from "./pages/products/AddProduct";
 import EditProduct from "./pages/products/EditProduct";
 import { fetchPaymentAction } from "./pages/payment-option/PaymentAction";
 import { getAllAdminAction } from "./pages/admin/adminAction";
+import Home from "./pages/home/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,6 +62,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <Home />
             </PrivateRoute>
           }
         />

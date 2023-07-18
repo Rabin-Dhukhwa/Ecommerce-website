@@ -1,14 +1,6 @@
 import { toast } from "react-toastify";
 import { TB_PAYMENT } from "../../utils/constant";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  setDoc,
-} from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../config/config";
 import { setSelectedPaymentOptions } from "./paymentSlice";
 

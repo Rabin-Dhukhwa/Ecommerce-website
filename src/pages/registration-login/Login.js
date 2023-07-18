@@ -15,7 +15,7 @@ const Login = () => {
   const [form, setForm] = useState({});
   const { user } = useSelector((state) => state.adminInfo);
   // console.log(location);
-  const pathname = location.state?.from?.pathname || "/dashboard";
+  const pathname = location.state?.from?.pathname || "/home";
 
   useEffect(() => {
     user?.uid && navigate(pathname);

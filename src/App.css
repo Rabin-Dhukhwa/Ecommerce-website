@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 .main {
   min-height: calc(100vh - 170px);
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 .register {
   max-width: 450px;
@@ -19,4 +24,11 @@
   padding: 0.3rem 0.8rem;
   border-radius: 5px;
   text-transform: capitalize;
+}
+/* ---------------------- */
+
+/* Add this CSS code to your stylesheet or style section */
+.carousel {
+  box-shadow: none !important;
+  outline: none !important;
 }
