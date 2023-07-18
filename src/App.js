@@ -26,6 +26,7 @@ import { fetchAllProductAction } from "./pages/products/productAction";
 import AddProduct from "./pages/products/AddProduct";
 import EditProduct from "./pages/products/EditProduct";
 import { fetchPaymentAction } from "./pages/payment-option/PaymentAction";
+import { getAllAdminAction } from "./pages/admin/adminAction";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
     dispatch(fetchAllCategoryAction());
     dispatch(fetchAllProductAction());
     dispatch(fetchPaymentAction());
+    dispatch(getAllAdminAction());
   });
   return (
     <div className="">

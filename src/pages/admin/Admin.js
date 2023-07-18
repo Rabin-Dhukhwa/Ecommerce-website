@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AdminLayout from "../../components/layout/AdminLayout";
+import { AllAdminTable } from "../../components/admin/AllAdminTable";
+import { getAllAdminAction } from "../../pages/admin/adminAction";
+import { useDispatch } from "react-redux";
 
 const Admin = () => {
-  return <AdminLayout pageTitle="Admin">coming ...</AdminLayout>;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllAdminAction());
+  }, [dispatch]);
+
+  return (
+    <AdminLayout pageTitle="All Admins">
+      <AllAdminTable />
+    </AdminLayout>
+  );
 };
 
 export default Admin;

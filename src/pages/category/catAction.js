@@ -18,7 +18,7 @@ export const addCategoryAction =
   (dispatch) => {
     try {
       //merge true will merge the updated data instead of replacing  new data only
-      console.log(rest);
+      // console.log(rest);
       const pending = setDoc(doc(db, TB_CATEGORY, slug), rest, { merge: true });
       // if (rest.update) {
       //   slug = rest.name;
