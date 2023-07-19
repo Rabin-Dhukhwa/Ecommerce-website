@@ -6,16 +6,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css/animate.min.css";
 import { Footer } from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
-import img1 from "./home-img/img8.jpg";
-import img2 from "./home-img/img7.jpg";
-import img3 from "./home-img/img4.jpg";
+import img1 from "./home-img/img15.jpg";
+import img2 from "./home-img/img13.jpg";
+import img3 from "./home-img/img6.jpg";
+import CarouselSlider from "../../components/carousel/CarouselSlider";
 
 const Home = () => {
+  const images = { img1, img2, img3 };
   return (
     <>
       <Header />
-      <main className="main">
-        <div className="home-page">
+      <main className="main-home">
+        {/* <div className="home-page">
           <div className="hero animate__animated animate__fadeIn">
             <h1 className="animate__animated animate__bounceInDown">
               Welcome to Your CMS
@@ -47,20 +49,9 @@ const Home = () => {
               </p>
             </div>
           </div>
-        </div>
-        {/* <hr /> */}
-        <div className="carousel-main">
-          <Carousel>
-            <Carousel.Item>
-              <img className="d-block w-100" src={img1} alt="First slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img className="d-block w-100" src={img2} alt="Second slide" />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img className="d-block w-100" src={img3} alt="Third slide" />
-            </Carousel.Item>
-          </Carousel>
+        </div> */}
+        <div className="home-carousel">
+          <CarouselSlider images={images} />
         </div>
       </main>
       <Footer />
