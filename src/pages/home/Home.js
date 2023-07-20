@@ -16,12 +16,9 @@ const Home = () => {
   return (
     <>
       <Header />
-      <main className="main-home">
-        <div className="home-carousel">
-          <CarouselSlider images={images} />
-        </div>
-      </main>
-      <Footer />
+
+      <CarouselSlider images={images} />
+      {/* <Footer /> */}
     </>
   );
 };

@@ -29,19 +29,21 @@
 }
 /* ---------------------- */
 /* for carousel background */
-.main-home .home-carousel .carousel .carousel-inner .carousel-item {
+.carousel .carousel-inner .carousel-item {
   background: none;
   padding: 0;
   margin: 0;
+  height: 93vh !important;
   /* background-size: cover; */
 }
 .main-home {
   min-height: calc(100vh - 170px);
 }
 .main-home .home-carousel .carousel .carousel-inner .carousel-item .d-block {
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100vh !important;
 }
 /* ------------------- */

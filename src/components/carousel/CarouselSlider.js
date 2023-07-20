@@ -14,7 +14,7 @@ const CarouselSlider = ({ images }) => {
         <img className="d-block w-100" src={images.img1} alt="First slide" />
         <Carousel.Caption>
           <h1>Welcome To Content Management System</h1>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <p>Manage you Technology Store</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={500}>
@@ -22,7 +22,7 @@ const CarouselSlider = ({ images }) => {
 
         <Carousel.Caption>
           <h1>Manage Your Products</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={2000}>
@@ -30,9 +30,9 @@ const CarouselSlider = ({ images }) => {
 
         <Carousel.Caption>
           <h1>Manage user Accounts</h1>
-          <p>
+          {/* <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
+          </p> */}
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
