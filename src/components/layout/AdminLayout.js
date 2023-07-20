@@ -12,9 +12,9 @@ const AdminLayout = ({ children, pageTitle }) => {
       <div className="right w-75">
         <Header />
 
-        <h1 className="py-3">{pageTitle}</h1>
+        <h1 className="px-5 py-1">{pageTitle}</h1>
         <hr />
-        <main className="main">{children}</main>
+        <main className="main ">{children}</main>
         <Footer />
       </div>
     </div>

@@ -7,9 +7,11 @@ import slugify from "slugify";
 import { toast } from "react-toastify";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/config";
+import { useNavigate } from "react-router-dom";
 // import { fetchAllCategoryAction } from "../../pages/category/catAction";
 
 export const NewProductForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { catList } = useSelector((state) => state.categories);
 
@@ -81,6 +83,7 @@ export const NewProductForm = () => {
     } catch (error) {
       toast.error(error.message);
     }
+    navigate("/products");
   };
 
   const handleOnChange = (e) => {

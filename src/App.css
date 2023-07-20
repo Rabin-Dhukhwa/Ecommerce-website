@@ -29,6 +29,7 @@
 }
 /* ---------------------- */
 /* for carousel background */
+
 .carousel .carousel-inner .carousel-item {
   background: none;
   padding: 0;
@@ -39,7 +40,7 @@
 .main-home {
   min-height: calc(100vh - 170px);
 }
-.main-home .home-carousel .carousel .carousel-inner .carousel-item .d-block {
+.carousel .carousel-inner .carousel-item .d-block {
   background-size: cover !important;
   background-repeat: no-repeat !important;
   width: 100%;
@@ -47,3 +48,50 @@
   height: 100vh !important;
 }
 /* ------------------- */
+/* for logo---------------- */
+/* CSS Styles */
+
+/* CSS Styles */
+/* CSS Styles */
+.logo {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.tech {
+  color: grey; /* Electric blue or your desired tech-inspired color */
+  font-size: 28px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.cms {
+  color: rgba(255, 255, 255, 0.781);
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    left: 100px; /* Start position off the screen on the left */
+  }
+  to {
+    opacity: 1;
+    left: 0; /* End position at the default position */
+  }
+}

@@ -25,12 +25,16 @@ const Header = () => {
       <Container>
         {/* <Navbar.Brand href="/">CTS</Navbar.Brand> */}
         <Link to="/" className="navbar-brand">
-          CTS
+          {/* CMS TECH STORE */}
+          <div className="logo">
+            <span className="tech">TechMart</span>
+            <span className="cms">CMS</span>
+          </div>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto gap-3">
-            <Link to="/" className="nav-link" title="Home">
+            <Link to="/home" className="nav-link" title="Home">
               <AiFillHome />
             </Link>
             {user?.uid ? (

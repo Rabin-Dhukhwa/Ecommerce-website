@@ -32,7 +32,7 @@
 }
 
 .animate__animated {
-  animation-duration: 1s;
+  animation-duration: 2.5s !important;
   animation-fill-mode: both;
 }
 

@@ -23,20 +23,20 @@ export const SideMenu = () => {
       label: "Orders",
       path: "/orders",
     },
-    {
-      label: "Buyers",
-      path: "/buyers",
-    },
-    {
-      label: "Reviews",
-      path: "/reviews",
-    },
+    // {
+    //   label: "Buyers",
+    //   path: "/buyers",
+    // },
+    // {
+    //   label: "Reviews",
+    //   path: "/reviews",
+    // },
   ];
   return (
     <nav className="">
-      <div className="top mt-4 text-center">Admin Account</div>
-      <hr />
-      <div className="sideMenu d-flex justify-content-center ">
+      {/* <div className="top mt-4 text-center">Admin Account</div> */}
+      {/* <hr /> */}
+      <div className="sideMenu d-flex justify-content-center mt-5 pt-5">
         <ul className="list-unstyled">
           {links.map(({ label, path }) => (
             <li key={label} className="py-3">
@@ -52,11 +52,11 @@ export const SideMenu = () => {
               Admins
             </Link>
           </li>
-          <li className="py-3">
+          {/* <li className="py-3">
             <Link to="/profile" className="nav-link fs-5">
               Profile
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

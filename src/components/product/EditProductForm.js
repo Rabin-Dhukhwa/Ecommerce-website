@@ -8,7 +8,7 @@ import {
   deleteProduct,
   fetchSingleProductAction,
 } from "../../pages/products/productAction";
-import slugify from "slugify";
+// import slugify from "slugify";
 import { toast } from "react-toastify";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../config/config";
@@ -103,6 +103,7 @@ export const EditProductForm = () => {
     } catch (error) {
       toast.error(error.message);
     }
+    navigate("/products");
   };
 
   const handleOnChange = (e) => {
