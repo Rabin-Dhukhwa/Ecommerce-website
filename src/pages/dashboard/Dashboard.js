@@ -5,7 +5,7 @@ import "./dashboard.css";
 const Dashboard = () => {
   return (
     <AdminLayout pageTitle="Dashboard">
-      <div className="home-page">
+      <div className="home-page ">
         <div className="hero animate__animated animate__fadeIn">
           <h1 className="animate__animated animate__bounceInDown">
             Welcome to Your CMS

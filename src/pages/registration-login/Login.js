@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { loginAdminUser } from "./userAction";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import img1 from "./login-img/dash4.jpg";
 
 const Login = () => {
   const location = useLocation();
@@ -58,7 +59,15 @@ const Login = () => {
   return (
     <>
       <Header />
-      <main className="main">
+      <main
+        className="main-login "
+        style={{
+          backgroundImage: `url(${img1})`, // Use backticks and interpolate the URL as a string
+          backgroundSize: "cover",
+          width: "100%",
+          // height: "100%",
+        }}
+      >
         <Form
           className="register border p-5 shadow-lg rounded mt-5"
           onSubmit={handleOnSubmit}

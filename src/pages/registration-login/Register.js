@@ -6,6 +6,8 @@ import { CustomInput } from "../../components/custom-input/CustomInput";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { createNewAdminAuth } from "./userAction";
+import img1 from "./login-img/dash1.jpg";
+
 const Register = () => {
   const [form, setForm] = useState({
     role: "admin",
@@ -84,7 +86,15 @@ const Register = () => {
   return (
     <>
       <Header />
-      <main className="main">
+      <main
+        className="main"
+        style={{
+          backgroundImage: `url(${img1})`,
+          backgroundSize: "cover",
+          width: "100%",
+          // height: "100%",
+        }}
+      >
         <Form
           className="register border p-5 shadow-lg rounded mt-5"
           onSubmit={handleOnSubmit}

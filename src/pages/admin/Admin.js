@@ -11,7 +11,7 @@ const Admin = () => {
   }, [dispatch]);
 
   return (
-    <AdminLayout pageTitle="All Admins">
+    <AdminLayout pageTitle="Admins">
       <AllAdminTable />
     </AdminLayout>
   );
