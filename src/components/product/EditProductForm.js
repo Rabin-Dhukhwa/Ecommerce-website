@@ -38,8 +38,7 @@ export const EditProductForm = () => {
     e.preventDefault();
 
     try {
-      const slug = slugify(form.title, { lower: true, trim: true });
-
+      const slug = form.slug;
       // uploda the images receive the url
       let oldImgToKeep = [];
       let imageUrls = [];
@@ -86,9 +85,13 @@ export const EditProductForm = () => {
 
         //remove images urls
 
-        oldImgToKeep = form.images.filter((img) => !imgToRemove.includes(img));
         // add the url with from
       }
+      if (form.images.length) {
+        oldImgToKeep = form.images.filter((img) => !imgToRemove.includes(img));
+      }
+
+      console.log(oldImgToKeep);
       dispatch(
         addProductAction({
           ...form,
@@ -96,6 +99,7 @@ export const EditProductForm = () => {
           images: [...oldImgToKeep, ...imageUrls],
         })
       );
+      setImgToRemove([]);
     } catch (error) {
       toast.error(error.message);
     }
@@ -212,6 +216,7 @@ export const EditProductForm = () => {
       setImgToRemove(filteredImg);
     }
   };
+  console.log(imgToRemove);
 
   const handleOnDelete = async () => {
     if (window.confirm("Are you sure you want to delete this product?")) {
@@ -220,6 +225,7 @@ export const EditProductForm = () => {
       result && navigate("/products");
     }
   };
+  console.log(imgToRemove);
   return (
     <div>
       <Form
