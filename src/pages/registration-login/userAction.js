@@ -60,7 +60,15 @@ export const loginAdminUser =
       //get user data from the database and add to the redux
       user?.uid && dispatch(getUserProfile(user.uid));
     } catch (error) {
-      toast.error(error.message);
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode === "auth/wrong-password") {
+        toast.error("Password is incorrect");
+      } else if (errorCode === "auth/user-not-found") {
+        toast.error("Email is not registered");
+      } else {
+        toast.error("An unexpected error occurred:", errorMessage);
+      }
     }
   };
 
