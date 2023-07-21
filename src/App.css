@@ -99,3 +99,12 @@
     left: 0; /* End position at the default position */
   }
 }
+
+/* ------------------- */
+.resetPassword:hover {
+  font-size: 25px;
+  font-weight: bold;
+  transform: scale(1.1);
+  transition: 1s;
+  cursor: pointer;
+}

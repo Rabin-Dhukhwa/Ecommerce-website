@@ -56,13 +56,14 @@ const Login = () => {
       minLength: "6",
     },
   ];
+
   return (
     <>
       <Header />
       <main
         className="main-login "
         style={{
-          backgroundImage: `url(${img1})`, // Use backticks and interpolate the URL as a string
+          backgroundImage: `url(${img1})`,
           backgroundSize: "cover",
           width: "100%",
           // height: "100%",
@@ -85,7 +86,10 @@ const Login = () => {
           </div>
           <p className="text-end mt-3">
             Forget Password? <br />
-            <Link to="/password-reset-request">Reset Now!</Link>
+            <div className="resetPassword" style={{ crusor: "pointer" }}>
+              {/* Reset Now! */}
+              <Link to="/password-reset-request">Reset Now!</Link>
+            </div>
           </p>
         </Form>
       </main>

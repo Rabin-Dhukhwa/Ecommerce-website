@@ -28,6 +28,7 @@ import EditProduct from "./pages/products/EditProduct";
 import { fetchPaymentAction } from "./pages/payment-option/PaymentAction";
 import { getAllAdminAction } from "./pages/admin/adminAction";
 import Home from "./pages/home/Home";
+import ResetPassword from "./pages/registration-login/ResetPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function App() {
     <div className="">
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/password-reset-request" element={<ResetPassword />} />
 
         {/* // private routes  */}
         <Route
@@ -57,6 +59,7 @@ function App() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/dashboard"
           element={
