@@ -22,7 +22,7 @@ const CarouselSlider = () => {
         <img className="d-block w-100 " src={img1} alt="First slide" />
         <Carousel.Caption>
           <h1>Content Management System</h1>
-          <h5>Manage TECHMART </h5>
+          <h5>TECHMART </h5>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={1500}>
