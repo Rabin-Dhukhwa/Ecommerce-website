@@ -7,8 +7,10 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { createNewAdminAuth } from "./userAction";
 import img1 from "./login-img/dash1.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     role: "admin",
   });
@@ -31,6 +33,7 @@ const Register = () => {
       return toast.error("Password should match!");
     }
     createNewAdminAuth(rest);
+    navigate("/dashboard");
   };
 
   const inputFields = [
