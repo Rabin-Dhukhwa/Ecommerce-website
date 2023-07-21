@@ -55,7 +55,7 @@ export const loginAdminUser =
       });
 
       const { user } = await pendingLoging;
-      console.log(user);
+      // console.log(user);
 
       //get user data from the database and add to the redux
       user?.uid && dispatch(getUserProfile(user.uid));

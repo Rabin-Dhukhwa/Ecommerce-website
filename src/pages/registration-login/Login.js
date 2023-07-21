@@ -33,7 +33,7 @@ const Login = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    // console.log(form);
     const { password, email } = form;
 
     dispatch(loginAdminUser({ password, email }));
@@ -65,6 +65,7 @@ const Login = () => {
         style={{
           backgroundImage: `url(${img1})`,
           backgroundSize: "cover",
+          backgroundPosition: "center center",
           width: "100%",
           // height: "100%",
         }}

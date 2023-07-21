@@ -9,7 +9,7 @@ export const getAllAdminAction = () => async (dispatch) => {
     //read all data from the TB_ADMIN
     const q = query(collection(db, TB_ADMIN));
     const adminSnap = await getDocs(q);
-    console.log(adminSnap);
+    // console.log(adminSnap);
 
     const adminList = [];
     //can use forEach() in adminSnap, predefined in adminSnap object return by firebase
@@ -22,7 +22,7 @@ export const getAllAdminAction = () => async (dispatch) => {
       adminList.push({ ...rest, slug });
       // console.log(adminList);
     });
-    console.log(adminList);
+    // console.log(adminList);
     dispatch(setAdminList(adminList));
   } catch (error) {
     toast.error(error.message);

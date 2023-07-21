@@ -37,6 +37,16 @@
   height: 93vh !important;
   /* background-size: cover; */
 }
+.carousel .carousel-inner .carousel-item .carousel-caption {
+  bottom: 17.25rem;
+  color: #0000009e;
+}
+/* .carousel .carousel-inner .carousel-item img {
+  background-size: cover !important;
+  background-position: center center;
+  width: 100%;
+} */
+
 .main-home,
 .main-login {
   min-height: calc(100vh - 170px);
@@ -53,9 +63,7 @@
 }
 /* ------------------- */
 /* for logo---------------- */
-/* CSS Styles */
 
-/* CSS Styles */
 /* CSS Styles */
 .logo {
   font-family: "Arial", sans-serif;
@@ -66,7 +74,7 @@
 }
 
 .tech {
-  color: grey; /* Electric blue or your desired tech-inspired color */
+  color: grey;
   font-size: 28px;
   animation: fadeInUp 1s ease-in-out;
 }
@@ -92,11 +100,11 @@
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    left: 100px; /* Start position off the screen on the left */
+    left: 100px;
   }
   to {
     opacity: 1;
-    left: 0; /* End position at the default position */
+    left: 0;
   }
 }
 
@@ -105,6 +113,6 @@
   font-size: 25px;
   font-weight: bold;
   transform: scale(1.1);
-  transition: 1s;
+  transition: 0.5s;
   cursor: pointer;
 }

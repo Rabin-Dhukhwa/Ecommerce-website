@@ -27,7 +27,7 @@ export const fetchPaymentAction = (id) => async (dispatch) => {
     const paymentSanp = await getDoc(doc(db, TB_PAYMENT, "payment-options"));
 
     const data = paymentSanp.data();
-    console.log(data);
+    // console.log(data);
 
     dispatch(setSelectedPaymentOptions(data));
   } catch (error) {

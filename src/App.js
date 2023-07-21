@@ -68,14 +68,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/home"
-          element={
-            // <PrivateRoute>
-            <Home />
-            // </PrivateRoute>
-          }
-        />
+        <Route path="/home" element={<Home />} />
         <Route
           path="/categories"
           element={

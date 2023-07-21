@@ -49,7 +49,8 @@ export const OrderTable = () => {
       </thead>
       <tbody>
         {OrderCustomer.map((item, i) => (
-          <tr key={item.slug}>
+          // <tr key=   {item.slug}>
+          <tr key={i}>
             <td>{i + 1}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
